@@ -1,13 +1,21 @@
+.interval-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
 .w-100 {
-  width: 100%;
+  flex: 1;
 }
-mat-card {
-  max-width: 400px;
-  margin: 16px auto;
-  padding: 16px;
-}
+
 .actions {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 8px;
+}
+
+.message {
+  margin-top: 12px;
+  font-style: italic;
+  color: #555;
 }

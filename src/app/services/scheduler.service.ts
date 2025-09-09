@@ -20,4 +20,8 @@ export class SchedulerService {
   runOnce(): Observable<any> {
     return this.http.post(`${environment.apiBaseUrl}/price-checker/run`, {});
   }
+
+  getStatus(): Observable<any> {
+    return this.http.get(`${environment.apiBaseUrl}/price-checker/status`);
+  }
 }
