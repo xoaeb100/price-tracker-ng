@@ -10,6 +10,7 @@ import { AddProductFormComponent } from '../../ui/add-product-form/add-product-f
 import { ProductsTableComponent } from '../../ui/products-table/products-table.component';
 import { ApiService } from '../../services/api.service';
 import { RealtimeService } from '../../services/realtime.service';
+import { SchedulerControlsComponent } from '../../ui/scheduler-controls/scheduler-controls.component';
 
 @Component({
   standalone: true,
@@ -23,11 +24,14 @@ import { RealtimeService } from '../../services/realtime.service';
     MatSnackBarModule,
     AddProductFormComponent,
     ProductsTableComponent,
+    SchedulerControlsComponent,
   ],
   template: `
     <div class="container">
       <mat-card class="card">
         <h2>Add a product to track</h2>
+
+        <app-scheduler-controls />
         <app-add-product-form (created)="onCreated()" />
       </mat-card>
 

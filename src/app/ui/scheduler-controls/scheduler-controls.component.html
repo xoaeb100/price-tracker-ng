@@ -1,0 +1,14 @@
+<mat-card>
+  <h2>Price Checker Control</h2>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Interval (minutes)</mat-label>
+    <input matInput type="number" [(ngModel)]="minutes" min="1" />
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="start()">Start</button>
+    <button mat-raised-button color="warn" (click)="stop()">Stop</button>
+    <button mat-stroked-button (click)="runOnce()">Run Once</button>
+  </div>
+</mat-card>
