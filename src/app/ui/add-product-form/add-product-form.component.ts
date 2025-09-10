@@ -24,65 +24,8 @@ import { ApiService } from '../../services/api.service';
     MatButtonModule,
     MatSelectModule,
   ],
-  template: `
-    <form class="form" [formGroup]="fg" (ngSubmit)="submit()">
-      <mat-form-field appearance="outline" class="w100">
-        <mat-label>Platform</mat-label>
-        <mat-select formControlName="platform" required>
-          <mat-option value="amazon">Amazon</mat-option>
-          <mat-option value="flipkart">Flipkart</mat-option>
-          <mat-option value="croma">Croma</mat-option>
-
-          <mat-option value="vijaysales">Vijay Sales</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="w100">
-        <mat-label>Product URL</mat-label>
-        <input
-          matInput
-          formControlName="url"
-          placeholder="https://..."
-          required
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="w100">
-        <mat-label> Email</mat-label>
-        <input
-          matInput
-          formControlName="customerEmail"
-          placeholder="....com"
-          required
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="w100">
-        <mat-label>Target Price (INR)</mat-label>
-        <input matInput formControlName="targetPrice" type="number" required />
-      </mat-form-field>
-
-      <button
-        mat-flat-button
-        color="primary"
-        [disabled]="fg.invalid || loading()"
-      >
-        {{ loading() ? 'Adding...' : 'Add Product' }}
-      </button>
-    </form>
-  `,
-  styles: [
-    `
-      .form {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      .w100 {
-        width: 100%;
-      }
-    `,
-  ],
+  templateUrl: './add-product-form.component.html',
+  styleUrls: ['./add-product-form.component.css'],
 })
 export class AddProductFormComponent {
   @Output() created = new EventEmitter<void>();
@@ -96,6 +39,7 @@ export class AddProductFormComponent {
     customerEmail: ['', [Validators.required]],
 
     targetPrice: [0, [Validators.required, Validators.min(1)]],
+    maxPrice: [0, [Validators.required, Validators.min(1)]],
   });
 
   async submit() {
@@ -108,6 +52,7 @@ export class AddProductFormComponent {
         url: '',
         customerEmail: '',
         targetPrice: 0,
+        maxPrice: 0,
       });
       this.created.emit();
     } finally {

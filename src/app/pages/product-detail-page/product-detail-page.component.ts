@@ -5,6 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProductHistoryChartComponent } from '../../ui/product-history-chart/product-history-chart.component';
 import { ApiService } from '../../services/api.service';
+import { ConfirmDeleteDialogComponent } from './confirmDeletedialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   standalone: true,
@@ -14,6 +17,7 @@ import { ApiService } from '../../services/api.service';
     MatCardModule,
     MatProgressSpinnerModule,
     ProductHistoryChartComponent,
+    MatIcon,
   ],
   template: `
     <div class="container" *ngIf="product(); else loading">
@@ -52,9 +56,16 @@ import { ApiService } from '../../services/api.service';
             [href]="product()?.url"
             target="_blank"
             rel="noopener"
+            >Open Product</a
           >
-            Open Product
-          </a>
+          <button
+            mat-icon-button
+            color="warn"
+            matTooltip="Delete this product"
+            (click)="openDeleteDialog()"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-card>
 
@@ -108,5 +119,28 @@ export class ProductDetailPageComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.api.loadProduct(id);
+  }
+
+  constructor(private dialog: MatDialog) {}
+
+  openDeleteDialog() {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
+      width: '350px',
+      data: { title: this.product()?.title },
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) this.deleteProduct();
+    });
+  }
+
+  deleteProduct() {
+    const id = this.product()?.id;
+    if (!id) return;
+
+    this.api.deleteProduct(id).then(
+      () => alert('Product deleted successfully'),
+      () => alert('Failed to delete product')
+    );
   }
 }

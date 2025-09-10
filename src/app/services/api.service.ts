@@ -9,6 +9,8 @@ export interface ProductDto {
   title?: string | null;
   currentPrice?: number | null;
   targetPrice: number;
+  maxPrice: number;
+
   currency?: string | null;
   imageUrl?: string | null;
   lastCheckedAt?: string | null;
@@ -38,9 +40,9 @@ export class ApiService {
     this.selectedProduct.set(res ?? null);
   }
 
-  async createProduct(body: any) // {
-  //   platform: 'amazon' | 'flipkart';
-  //   url: string;
+  async createProduct(
+    body: any // { //   platform: 'amazon' | 'flipkart';
+  ) //   url: string;
   //   targetPrice: number;
   // }
   {
@@ -54,6 +56,15 @@ export class ApiService {
     const res = await this.http
       .get<any[]>(
         `${environment.apiBaseUrl}/price-history/${productId}?limit=200`
+      )
+      .toPromise();
+    return res ?? [];
+  }
+
+  async deleteProduct(productId: string) {
+    const res = await this.http
+      .delete<{ message: string }>(
+        `${environment.apiBaseUrl}/products/${productId}`
       )
       .toPromise();
     return res ?? [];

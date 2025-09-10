@@ -30,9 +30,16 @@ import { RouterLink } from '@angular/router';
       </ng-container>
 
       <ng-container matColumnDef="targetPrice">
-        <th mat-header-cell *matHeaderCellDef>Target</th>
+        <th mat-header-cell *matHeaderCellDef>Min Price</th>
         <td mat-cell *matCellDef="let p">
           {{ p.targetPrice | currency : 'INR' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="maxPrice">
+        <th mat-header-cell *matHeaderCellDef>Max Price</th>
+        <td mat-cell *matCellDef="let p">
+          {{ p.maxPrice | currency : 'INR' }}
         </td>
       </ng-container>
 
@@ -62,6 +69,7 @@ export class ProductsTableComponent {
     'platform',
     'currentPrice',
     'targetPrice',
+    'maxPrice',
     'lastCheckedAt',
   ];
 }

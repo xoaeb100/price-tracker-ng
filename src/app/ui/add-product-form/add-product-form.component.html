@@ -1,1 +1,41 @@
-<p>add-product-form works!</p>
+<form class="form" [formGroup]="fg" (ngSubmit)="submit()">
+  <mat-form-field appearance="outline" class="w100">
+    <mat-label>Platform</mat-label>
+    <mat-select formControlName="platform" required>
+      <mat-option value="amazon">Amazon</mat-option>
+      <mat-option value="flipkart">Flipkart</mat-option>
+      <mat-option value="croma">Croma</mat-option>
+
+      <mat-option value="vijaysales">Vijay Sales</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w100">
+    <mat-label>Product URL</mat-label>
+    <input matInput formControlName="url" placeholder="https://..." required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w100">
+    <mat-label> Email</mat-label>
+    <input
+      matInput
+      formControlName="customerEmail"
+      placeholder="....com"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w100">
+    <mat-label>Min Target Price (INR)</mat-label>
+    <input matInput formControlName="targetPrice" type="number" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w100">
+    <mat-label>Max Price (INR)</mat-label>
+    <input matInput formControlName="maxPrice" type="number" required />
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" [disabled]="fg.invalid || loading()">
+    {{ loading() ? "Adding..." : "Add Product" }}
+  </button>
+</form>
