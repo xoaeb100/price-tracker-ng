@@ -36,8 +36,8 @@ import { MatIcon } from '@angular/material/icon';
 
         <mat-card-content>
           <p>
-            <b>Target Price:</b>
-            {{ product()?.targetPrice | currency : 'INR' }}
+            <b>Min Price:</b>
+            {{ product()?.minPrice | currency : 'INR' }}
           </p>
           <p>
             <b>Current Price:</b>

@@ -8,7 +8,7 @@ export interface ProductDto {
   platform: 'amazon' | 'flipkart';
   title?: string | null;
   currentPrice?: number | null;
-  targetPrice: number;
+  minPrice: number;
   maxPrice: number;
 
   currency?: string | null;
@@ -41,9 +41,8 @@ export class ApiService {
   }
 
   async createProduct(
-    body: any // { //   platform: 'amazon' | 'flipkart';
-  ) //   url: string;
-  //   targetPrice: number;
+    body: any // { //   platform: 'amazon' | 'flipkart'; //   url: string;
+  ) //   minPrice: number;
   // }
   {
     const res = await this.http

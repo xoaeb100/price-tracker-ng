@@ -38,7 +38,7 @@ export class AddProductFormComponent {
     url: ['', [Validators.required]],
     customerEmail: ['', [Validators.required]],
 
-    targetPrice: [0, [Validators.required, Validators.min(1)]],
+    minPrice: [0, [Validators.required, Validators.min(1)]],
     maxPrice: [0, [Validators.required, Validators.min(1)]],
   });
 
@@ -51,7 +51,7 @@ export class AddProductFormComponent {
         platform: '',
         url: '',
         customerEmail: '',
-        targetPrice: 0,
+        minPrice: 0,
         maxPrice: 0,
       });
       this.created.emit();
