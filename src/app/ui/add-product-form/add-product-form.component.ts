@@ -35,8 +35,9 @@ export class AddProductFormComponent {
 
   fg = this.fb.nonNullable.group({
     platform: ['', Validators.required],
-    url: ['', [Validators.required]],
-    customerEmail: ['', [Validators.required]],
+    // url: ['',],
+    productId: ['', [Validators.required]],
+    customerEmail: ['xoaeb100@gmail.com', [Validators.required]],
 
     minPrice: [0, [Validators.required, Validators.min(1)]],
     maxPrice: [0, [Validators.required, Validators.min(1)]],
@@ -49,7 +50,8 @@ export class AddProductFormComponent {
       await this.api.createProduct(this.fg.getRawValue());
       this.fg.reset({
         platform: '',
-        url: '',
+
+        productId: '',
         customerEmail: '',
         minPrice: 0,
         maxPrice: 0,

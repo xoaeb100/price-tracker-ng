@@ -41,10 +41,10 @@ export class ApiService {
   }
 
   async createProduct(
-    body: any // { //   platform: 'amazon' | 'flipkart'; //   url: string;
-  ) //   minPrice: number;
-  // }
+    body: any // { //   platform: 'amazon' | 'flipkart'; //   url: string; //   minPrice: number;
+  ) // }
   {
+    body.url = 'www.com';
     const res = await this.http
       .post<ProductDto>(`${environment.apiBaseUrl}/products`, body)
       .toPromise();
