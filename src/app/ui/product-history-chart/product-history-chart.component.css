@@ -1,0 +1,15 @@
+.history-chart {
+  margin-top: 1rem;
+  height: 400px;
+  position: relative;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.empty {
+  opacity: 0.7;
+  font-style: italic;
+}

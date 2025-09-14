@@ -1,1 +1,6 @@
-<p>product-history-chart works!</p>
+<div class="history-chart">
+  <h2>Price History</h2>
+
+  <canvas #historyCanvas *ngIf="data().length"></canvas>
+  <p *ngIf="!data().length" class="empty">No history yet.</p>
+</div>

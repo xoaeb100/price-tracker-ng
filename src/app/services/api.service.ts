@@ -41,9 +41,8 @@ export class ApiService {
   }
 
   async createProduct(
-    body: any // { //   platform: 'amazon' | 'flipkart'; //   url: string; //   minPrice: number;
-  ) // }
-  {
+    body: any // { //   platform: 'amazon' | 'flipkart'; //   url: string; //   minPrice: number; // }
+  ) {
     body.url = 'www.com';
     const res = await this.http
       .post<ProductDto>(`${environment.apiBaseUrl}/products`, body)
@@ -53,9 +52,7 @@ export class ApiService {
 
   async getHistory(productId: string) {
     const res = await this.http
-      .get<any[]>(
-        `${environment.apiBaseUrl}/price-history/${productId}?limit=200`
-      )
+      .get<any[]>(`${environment.apiBaseUrl}/products/history/${productId}`)
       .toPromise();
     return res ?? [];
   }
