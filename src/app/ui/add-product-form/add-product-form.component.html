@@ -35,6 +35,10 @@
     <input matInput formControlName="maxPrice" type="number" required />
   </mat-form-field>
 
+  <mat-slide-toggle formControlName="sendMail" color="primary">
+    Email Notifications
+  </mat-slide-toggle>
+
   <button mat-flat-button color="primary" [disabled]="fg.invalid || loading()">
     {{ loading() ? "Adding..." : "Add Product" }}
   </button>

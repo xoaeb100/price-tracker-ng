@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { ApiService } from '../../services/api.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ import { ApiService } from '../../services/api.service';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatSlideToggleModule,
   ],
   templateUrl: './add-product-form.component.html',
   styleUrls: ['./add-product-form.component.css'],
@@ -41,6 +43,7 @@ export class AddProductFormComponent {
 
     minPrice: [0, [Validators.required, Validators.min(1)]],
     maxPrice: [0, [Validators.required, Validators.min(1)]],
+    sendMail: [true],
   });
 
   async submit() {
