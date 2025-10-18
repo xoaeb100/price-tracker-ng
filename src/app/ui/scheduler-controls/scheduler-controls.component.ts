@@ -59,18 +59,21 @@ export class SchedulerControlsComponent {
     const minutes = this.convertToMinutes();
     this.schedulerSvc.start(minutes).subscribe((res) => {
       this.message = res.message;
+      this.loadStatus();
     });
   }
 
   stop() {
     this.schedulerSvc.stop().subscribe((res) => {
       this.message = res.message;
+      this.loadStatus();
     });
   }
 
   runOnce() {
     this.schedulerSvc.runOnce().subscribe((res) => {
       this.message = res.message;
+      this.loadStatus();
     });
   }
 }
