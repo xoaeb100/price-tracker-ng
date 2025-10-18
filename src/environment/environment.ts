@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
-  apiBaseUrl: 'http://localhost:3000',
-  wsUrl: 'http://localhost:3000/ws',
+  production: true,
+  apiBaseUrl: 'price-tracker-api-production-311d.up.railway.app',
+  wsUrl: 'price-tracker-api-production-311d.up.railway.app',
 };
