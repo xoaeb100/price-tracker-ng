@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://your-api.example.com',
-  wsUrl: 'https://your-api.example.com/ws',
+  apiBaseUrl: 'https://price-tracker-api-production-311d.up.railway.app',
+  wsUrl: 'wss://price-tracker-api-production-311d.up.railway.app',
 };
