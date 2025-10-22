@@ -1,6 +1,25 @@
 <div class="history-chart">
   <h2>Price History</h2>
 
-  <canvas #historyCanvas *ngIf="data().length"></canvas>
-  <p *ngIf="!data().length" class="empty">No history yet.</p>
+  <!-- Always render canvas so we don't race with view creation.
+       Show a simple overlay message if no data. -->
+  <div class="chart-wrapper" style="height: 360px; position: relative">
+    <canvas #historyCanvas></canvas>
+
+    <div
+      class="empty-overlay"
+      *ngIf="!data().length"
+      style="
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.85);
+        z-index: 2;
+      "
+    >
+      <p class="empty">No history yet.</p>
+    </div>
+  </div>
 </div>
